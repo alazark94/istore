@@ -75,7 +75,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 2:
               page = _context.sent["default"];
 
-              if (page.layout === undefined) {
+              if (page.layout === undefined && !name.startsWith('Admin/')) {
                 page.layout = _Shared_Layout__WEBPACK_IMPORTED_MODULE_3__["default"];
               }
 
@@ -107,7 +107,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }).use(plugin).component("Head", _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.Head).component("Link", _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.Link).mount(el);
   },
   title: function title(_title) {
-    return "".concat(_title, " - Donation");
+    return "".concat(_title, " - iStore");
   }
 });
 _inertiajs_progress__WEBPACK_IMPORTED_MODULE_2__.InertiaProgress.init();
@@ -194,6 +194,14 @@ __webpack_require__.r(__webpack_exports__);
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var map = {
+	"./Admin/Dashboard": [
+		"./resources/js/Pages/Admin/Dashboard.vue",
+		"resources_js_Pages_Admin_Dashboard_vue"
+	],
+	"./Admin/Dashboard.vue": [
+		"./resources/js/Pages/Admin/Dashboard.vue",
+		"resources_js_Pages_Admin_Dashboard_vue"
+	],
 	"./Home": [
 		"./resources/js/Pages/Home.vue",
 		"resources_js_Pages_Home_vue"
@@ -201,6 +209,14 @@ var map = {
 	"./Home.vue": [
 		"./resources/js/Pages/Home.vue",
 		"resources_js_Pages_Home_vue"
+	],
+	"./Login": [
+		"./resources/js/Pages/Login.vue",
+		"resources_js_Pages_Login_vue"
+	],
+	"./Login.vue": [
+		"./resources/js/Pages/Login.vue",
+		"resources_js_Pages_Login_vue"
 	]
 };
 function webpackAsyncContext(req) {

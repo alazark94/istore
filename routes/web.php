@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return inertia('Home');
 });
+
+Route::get('/login', [\App\Http\Controllers\Auth\LoginController::class, 'showLogin']);
+Route::post('/login', [\App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
+Route::get('/dashboard', function () {
+    return inertia('Admin/Dashboard');
+})->middleware('auth');
+Route::post('/logout', [\App\Http\Controllers\Auth\LoginController::class, 'logout']);

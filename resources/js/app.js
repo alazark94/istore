@@ -8,7 +8,7 @@ createInertiaApp({
     resolve: async (name) => {
         let page = (await import(`./Pages/${name}`)).default;
 
-        if (page.layout === undefined) {
+        if (page.layout === undefined && !name.startsWith('Admin/')) {
             page.layout = Layout;
         }
 
@@ -21,7 +21,7 @@ createInertiaApp({
             .component("Link", Link)
             .mount(el);
     },
-    title: (title) => `${title} - Donation`,
+    title: (title) => `${title} - iStore`,
 });
 
 InertiaProgress.init();
