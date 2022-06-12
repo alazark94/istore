@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col items-center justify-center w-full m-10">
         <h1 class="font-black text-4xl mb-16">Cart</h1>
-        <div class="divide-y divide-gray-400 space-y-10 w-10/12">
+        <div v-if="cartItems" class="divide-y divide-gray-400 space-y-10 w-10/12">
 
             <div class=" flex justify-around " v-for="item in cartItems" :key="item.id">
                 <div>
@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="flex justify-around items-center w-1/2 mt-10">
-            <Link href="/checkout" class="px-10 py-5 bg-gray-900 text-white ">
+            <Link as="button" :disabled="cartItems === null" href="/checkout" class="px-10 py-5 bg-gray-900 text-white disabled:bg-gray-600">
                 Checkout
             </Link>
             <Link href="/" class="text-blue-600 hover:underline">Go Back Shopping</Link>
@@ -46,6 +46,10 @@ import {computed, defineProps} from "vue";
 let props = defineProps({
     cartItems: Array
 });
+
+const totalItems = computed(() => {
+    return props.cartItems == null ? false : props.cartItems.length;
+})
 
 const totalPrice = computed(() => {
     let totalPrice = 0;

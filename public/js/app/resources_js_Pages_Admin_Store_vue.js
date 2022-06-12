@@ -237,9 +237,6 @@ __webpack_require__.r(__webpack_exports__);
       storeLinks: [{
         url: "/users/".concat(this.$page.props.auth.user.id, "/stores"),
         title: 'My Stores'
-      }, {
-        url: '/orders',
-        title: 'Order'
       }]
     };
   },

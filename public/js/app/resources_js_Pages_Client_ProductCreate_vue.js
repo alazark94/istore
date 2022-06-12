@@ -176,13 +176,6 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         url: "/users/".concat(this.$page.props.auth.user.id, "/stores"),
         title: 'My Stores'
-      }],
-      storeLinks: [{
-        url: '/customers',
-        title: 'Customers'
-      }, {
-        url: '/orders',
-        title: 'Order'
       }]
     };
   },
@@ -612,11 +605,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_SideNavList, {
         links: $data.links,
         heading: "Management"
-      }, null, 8
-      /* PROPS */
-      , ["links"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_SideNavList, {
-        links: $data.storeLinks,
-        heading: "Store"
       }, null, 8
       /* PROPS */
       , ["links"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
