@@ -1,6 +1,6 @@
 <template>
     <Head title="Dashboard"/>
-    <StatCardGrid/>
+    <StatCardGrid :my-total-revenue="myTotalRevenue"/>
 </template>
 
 <script>
@@ -8,7 +8,10 @@ import ClientLayout from "@/Shared/ClientLayout";
 
 export default {
     name: "Dashboard",
-    layout: ClientLayout
+    layout: ClientLayout,
+    props: {
+        myTotalRevenue: Number
+    }
 }
 </script>
 
