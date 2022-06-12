@@ -29,7 +29,7 @@ Route::get('/dashboard', function () {
     $totalStoreAmount = 0;
 
     foreach (auth()->user()->stores() as $store) {
-        $store->orders->forEach(function ($order) use ($totalStoreAmount) {
+        $store->orders->forEach(function ($order) use (&$totalStoreAmount) {
             $totalStoreAmount += $order->total_price;
         });
     }
