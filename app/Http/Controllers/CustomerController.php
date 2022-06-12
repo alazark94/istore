@@ -21,7 +21,7 @@ class CustomerController extends Controller
     {
         return inertia(auth()->user()->role_id === 1
             ? 'Admin/CustomerIndex'
-            : 'Client/CategoryIndex', [
+            : 'Client/CustomerIndex', [
             'customers' => $store->customers()->when(request('search'), function ($query, $search) {
                 $query->where('name', 'like', "%$search%");
             })
