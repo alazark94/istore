@@ -176,6 +176,13 @@
                     >{{ form.errors.country }}</span
                     >
                 </div>
+                <div class="py-3">
+                    <p class="text-sm">
+                        For testing purposes please use <br/>
+                        4242 4242 4242 4242 <br/>
+                        Any CVC and Date after current date
+                    </p>
+                </div>
                 <div ref="cardElement" class="my-5 border rounded p-5">
                     <!-- Elements will create input elements here -->
                 </div>
