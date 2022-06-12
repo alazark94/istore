@@ -4,8 +4,8 @@
 
         <div class="flex items-center content-center w-10/12 mx-auto text-black space-x-6">
             <div class="w-60 min-h-screen flex items-center bg-gray-300 my-10 sticky">
-                <ul v-for="category in categories" :key='category.id' class="divide-y-2 divide-gray-400 w-full" >
-                    <li class="text-center">
+                <ul class="divide-y-2 divide-gray-400 w-full" >
+                    <li class="text-center" v-for="category in categories" :key='category.id'>
                         <Link :href="`/categories/${category.id}/products`">
                         {{ category.name }}
                         </Link>
