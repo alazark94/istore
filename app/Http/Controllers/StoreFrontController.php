@@ -19,7 +19,7 @@ class StoreFrontController extends Controller
     public function home()
     {
         return inertia('Home', [
-            'categories' => Category::get('name')->unique(),
+            'categories' => Category::get('name'),
             'products' => Product::when(request('search'), function ($query, $search) {
                 $query->where('name', 'like', "%$search%");
             })->orderBy('created_at', 'desc')
