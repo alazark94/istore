@@ -19,7 +19,7 @@ class StoreFrontController extends Controller
     public function home()
     {
         return inertia('Home', [
-            'categories' => Category::get('name'),
+            'categories' => Category::get(['id', 'name']),
             'products' => Product::when(request('search'), function ($query, $search) {
                 $query->where('name', 'like', "%$search%");
             })->orderBy('created_at', 'desc')
@@ -161,4 +161,27 @@ class StoreFrontController extends Controller
 
         return redirect('/')->withoutCookie('cart');
     }
+
+    public function categoryProducts(Category $category)
+    {
+        return inertia('Home', [
+            'categories' => Category::get(['id', 'name']),
+            'products' => $category->products()->when(request('search'), function ($query, $search) {
+                $query->where('name', 'like', "%$search%");
+            })->orderBy('created_at', 'desc')
+                ->paginate(10)
+                ->withQueryString()
+                ->through(function ($product) {
+                    return [
+                        'id' => $product->id,
+                        'name' => $product->name,
+                        'price' => $product->price,
+                        'quantity' => $product->quantity,
+                        'image' => \Illuminate\Support\Facades\Storage::url($product->img_url),
+                    ];
+                }),
+            'filters' => request()->only(['search']),
+        ]);
+    }
+
 }

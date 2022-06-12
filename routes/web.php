@@ -54,6 +54,7 @@ Route::resource('stores.customers', \App\Http\Controllers\CustomerController::cl
 Route::resource('stores.orders', \App\Http\Controllers\OrderController::class)->shallow();
 
 
+
 Route::middleware('guest')->group(function () {
     Route::get('/register', function () {
         return inertia('Register');
@@ -63,8 +64,8 @@ Route::middleware('guest')->group(function () {
 
 Route::post('/add-to-cart/{id}', [\App\Http\Controllers\CartController::class, 'addToCart']);
 
+Route::get('/categories/{category}/products', [\App\Http\Controllers\StoreFrontController::class, 'categoryProducts']);
 Route::get('/{store}', [\App\Http\Controllers\StoreFrontController::class, 'storeProducts']);
-
 
 
 
