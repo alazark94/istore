@@ -28,10 +28,8 @@ Route::get('/dashboard', function () {
     $totalRevenue = \App\Models\Order::sum('total_price');
     $totalStoreAmount = 0;
 
-    foreach (auth()->user()->stores() as $store) {
-        $store->orders->forEach(function ($order) use (&$totalStoreAmount) {
-            $totalStoreAmount += $order->total_price;
-        });
+    foreach (auth()->user()->stores as $store) {
+        $totalStoreAmount = $store->orders()->sum('total_price');
     }
     $myTotalRevenue = $totalStoreAmount;
 
