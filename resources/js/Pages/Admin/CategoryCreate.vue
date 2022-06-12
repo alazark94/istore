@@ -69,7 +69,7 @@ let submit = () => {
                 icon: 'success',
                 title: 'Success',
                 text: 'New Category Added',
-                footer: '<a href="/admin/dashboard">Go to dashboard</a>'
+                footer: '<a href="/dashboard">Go to dashboard</a>'
             });
         },
     });

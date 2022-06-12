@@ -170,7 +170,7 @@ let submit = (id) => {
                 icon: 'success',
                 title: 'Success',
                 text: 'New Store Added',
-                footer: '<a href="/admin/dashboard">Go to dashboard</a>'
+                footer: '<a href="/dashboard">Go to dashboard</a>'
             });
         },
     });

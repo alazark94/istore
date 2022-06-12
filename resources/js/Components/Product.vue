@@ -6,7 +6,7 @@
             <span class="font-bold">{{ product.name }}</span>
             ${{ product.price }}
             <br>
-            <Link :href="`/add-to-cart/${product.id}`" method="post" as="button" class="border rounded bg-gray-900 text-center text-white px-3 py-2">
+            <Link :disabled="product.quantity < 1" :href="`/add-to-cart/${product.id}`" method="post" as="button" class="border rounded bg-gray-900 text-center text-white px-3 py-2">
                 Add to Cart
             </Link>
         </h3>

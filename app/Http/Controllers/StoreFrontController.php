@@ -98,10 +98,15 @@ class StoreFrontController extends Controller
     }
 
     /**
-     * @return Response|ResponseFactory
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|Response|ResponseFactory
      */
-    public function checkout()
+    public function checkout(Request $request)
     {
+        if(!$request->cookie('cart')) {
+            return redirect('/')->withErrors([
+                'shopping_cart' => 'Nothing in you shopping cart!'
+            ]);
+        }
         return inertia('Checkout');
     }
 
@@ -145,6 +150,7 @@ class StoreFrontController extends Controller
 
             foreach (json_decode($request->cookie('cart'), true) as $product)  {
                 $totalPrice += $product['quantity'] * $product['price'];
+                $product = Product::find($product['id']);
                 $store = Store::find($product['store_id']);
                 $store->customers()->attach($customer);
                 $store->orders()->create([
@@ -155,7 +161,7 @@ class StoreFrontController extends Controller
 
             }
 
-        $stripe = $customer->charge($totalPrice *  100, $validated['paymentMethodID']);
+            $customer->charge($totalPrice *  100, $validated['paymentMethodID']);
 
 
 
