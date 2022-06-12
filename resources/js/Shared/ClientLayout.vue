@@ -2,7 +2,6 @@
     <div class="flex divide-x-2 divide-gray-400">
         <SideNav class="w-60 min-h-screen">
             <SideNavList :links="links" heading="Management" />
-            <SideNavList :links="storeLinks" heading="Store" />
             <div class="flex justify-center">
                 <Link class="border border-gray-400 rounded mx-auto px-4 py-2 bg-blue-600 hover:bg-blue-900" :href="`/users/${$page.props.auth.user.id}/stores/create`">
                     Create Store
@@ -56,18 +55,6 @@ export default {
                     title: 'My Stores'
                 },
             ],
-
-            storeLinks: [
-
-                {
-                    url: '/customers',
-                    title: 'Customers'
-                },
-                {
-                    url: '/orders',
-                    title: 'Order'
-                }
-            ]
         }
     },
     mounted() {

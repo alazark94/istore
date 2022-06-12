@@ -74,10 +74,6 @@ export default {
                 {
                     url: `/users/${this.$page.props.auth.user.id}/stores`,
                     title: 'My Stores'
-                },
-                {
-                    url: '/orders',
-                    title: 'Order'
                 }
             ]
         }
