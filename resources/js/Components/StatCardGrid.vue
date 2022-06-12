@@ -1,10 +1,7 @@
 <template>
     <div class="grid grid-cols-3 gap-2 justify-center items-center m-10 gap-y-2">
-        <StatCard heading="Total Sales" number="999"/>
-        <StatCard heading="Total Sales" number="999"/>
-        <StatCard heading="Total Sales" number="999"/>
-        <StatCard heading="Total Sales" number="999"/>
-        <StatCard heading="Total Sales" number="999"/>
+        <StatCard heading="Total Revenue" :number="totalRevenue"/>
+        <StatCard heading="My Total Revenue" :number="myTotalRevenue"/>
     </div>
 </template>
 
@@ -14,6 +11,10 @@ export default {
     name: "StatCardGrid",
     components: {
         StatCard
+    },
+    props: {
+        totalRevenue: Number,
+        myTotalRevenue: Number
     }
 }
 </script>

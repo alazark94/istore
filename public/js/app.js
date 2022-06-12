@@ -194,6 +194,36 @@ __webpack_require__.r(__webpack_exports__);
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var map = {
+	"./Admin/CategoryCreate": [
+		"./resources/js/Pages/Admin/CategoryCreate.vue",
+		"/js/vendor",
+		"resources_js_Pages_Admin_CategoryCreate_vue"
+	],
+	"./Admin/CategoryCreate.vue": [
+		"./resources/js/Pages/Admin/CategoryCreate.vue",
+		"/js/vendor",
+		"resources_js_Pages_Admin_CategoryCreate_vue"
+	],
+	"./Admin/CategoryIndex": [
+		"./resources/js/Pages/Admin/CategoryIndex.vue",
+		"/js/vendor",
+		"resources_js_Pages_Admin_CategoryIndex_vue"
+	],
+	"./Admin/CategoryIndex.vue": [
+		"./resources/js/Pages/Admin/CategoryIndex.vue",
+		"/js/vendor",
+		"resources_js_Pages_Admin_CategoryIndex_vue"
+	],
+	"./Admin/CustomerIndex": [
+		"./resources/js/Pages/Admin/CustomerIndex.vue",
+		"/js/vendor",
+		"resources_js_Pages_Admin_CustomerIndex_vue"
+	],
+	"./Admin/CustomerIndex.vue": [
+		"./resources/js/Pages/Admin/CustomerIndex.vue",
+		"/js/vendor",
+		"resources_js_Pages_Admin_CustomerIndex_vue"
+	],
 	"./Admin/Dashboard": [
 		"./resources/js/Pages/Admin/Dashboard.vue",
 		"resources_js_Pages_Admin_Dashboard_vue"
@@ -201,6 +231,190 @@ var map = {
 	"./Admin/Dashboard.vue": [
 		"./resources/js/Pages/Admin/Dashboard.vue",
 		"resources_js_Pages_Admin_Dashboard_vue"
+	],
+	"./Admin/OrderIndex": [
+		"./resources/js/Pages/Admin/OrderIndex.vue",
+		"/js/vendor",
+		"resources_js_Pages_Admin_OrderIndex_vue"
+	],
+	"./Admin/OrderIndex.vue": [
+		"./resources/js/Pages/Admin/OrderIndex.vue",
+		"/js/vendor",
+		"resources_js_Pages_Admin_OrderIndex_vue"
+	],
+	"./Admin/ProductCreate": [
+		"./resources/js/Pages/Admin/ProductCreate.vue",
+		"/js/vendor",
+		"resources_js_Pages_Admin_ProductCreate_vue"
+	],
+	"./Admin/ProductCreate.vue": [
+		"./resources/js/Pages/Admin/ProductCreate.vue",
+		"/js/vendor",
+		"resources_js_Pages_Admin_ProductCreate_vue"
+	],
+	"./Admin/ProductIndex": [
+		"./resources/js/Pages/Admin/ProductIndex.vue",
+		"/js/vendor",
+		"resources_js_Pages_Admin_ProductIndex_vue"
+	],
+	"./Admin/ProductIndex.vue": [
+		"./resources/js/Pages/Admin/ProductIndex.vue",
+		"/js/vendor",
+		"resources_js_Pages_Admin_ProductIndex_vue"
+	],
+	"./Admin/ProductUpdate": [
+		"./resources/js/Pages/Admin/ProductUpdate.vue",
+		"/js/vendor",
+		"resources_js_Pages_Admin_ProductUpdate_vue"
+	],
+	"./Admin/ProductUpdate.vue": [
+		"./resources/js/Pages/Admin/ProductUpdate.vue",
+		"/js/vendor",
+		"resources_js_Pages_Admin_ProductUpdate_vue"
+	],
+	"./Admin/Store": [
+		"./resources/js/Pages/Admin/Store.vue",
+		"/js/vendor",
+		"resources_js_Pages_Admin_Store_vue"
+	],
+	"./Admin/Store.vue": [
+		"./resources/js/Pages/Admin/Store.vue",
+		"/js/vendor",
+		"resources_js_Pages_Admin_Store_vue"
+	],
+	"./Admin/StoreCreate": [
+		"./resources/js/Pages/Admin/StoreCreate.vue",
+		"/js/vendor",
+		"resources_js_Pages_Admin_StoreCreate_vue"
+	],
+	"./Admin/StoreCreate.vue": [
+		"./resources/js/Pages/Admin/StoreCreate.vue",
+		"/js/vendor",
+		"resources_js_Pages_Admin_StoreCreate_vue"
+	],
+	"./Admin/StoreUpdate": [
+		"./resources/js/Pages/Admin/StoreUpdate.vue",
+		"/js/vendor",
+		"resources_js_Pages_Admin_StoreUpdate_vue"
+	],
+	"./Admin/StoreUpdate.vue": [
+		"./resources/js/Pages/Admin/StoreUpdate.vue",
+		"/js/vendor",
+		"resources_js_Pages_Admin_StoreUpdate_vue"
+	],
+	"./Admin/User": [
+		"./resources/js/Pages/Admin/User.vue",
+		"/js/vendor",
+		"resources_js_Pages_Admin_User_vue"
+	],
+	"./Admin/User.vue": [
+		"./resources/js/Pages/Admin/User.vue",
+		"/js/vendor",
+		"resources_js_Pages_Admin_User_vue"
+	],
+	"./Admin/UserCreate": [
+		"./resources/js/Pages/Admin/UserCreate.vue",
+		"resources_js_Pages_Admin_UserCreate_vue"
+	],
+	"./Admin/UserCreate.vue": [
+		"./resources/js/Pages/Admin/UserCreate.vue",
+		"resources_js_Pages_Admin_UserCreate_vue"
+	],
+	"./Cart": [
+		"./resources/js/Pages/Cart.vue",
+		"resources_js_Pages_Cart_vue"
+	],
+	"./Cart.vue": [
+		"./resources/js/Pages/Cart.vue",
+		"resources_js_Pages_Cart_vue"
+	],
+	"./Checkout": [
+		"./resources/js/Pages/Checkout.vue",
+		"/js/vendor",
+		"resources_js_Pages_Checkout_vue"
+	],
+	"./Checkout.vue": [
+		"./resources/js/Pages/Checkout.vue",
+		"/js/vendor",
+		"resources_js_Pages_Checkout_vue"
+	],
+	"./Client/CategoryCreate": [
+		"./resources/js/Pages/Client/CategoryCreate.vue",
+		"/js/vendor",
+		"resources_js_Pages_Client_CategoryCreate_vue"
+	],
+	"./Client/CategoryCreate.vue": [
+		"./resources/js/Pages/Client/CategoryCreate.vue",
+		"/js/vendor",
+		"resources_js_Pages_Client_CategoryCreate_vue"
+	],
+	"./Client/CategoryIndex": [
+		"./resources/js/Pages/Client/CategoryIndex.vue",
+		"/js/vendor",
+		"resources_js_Pages_Client_CategoryIndex_vue"
+	],
+	"./Client/CategoryIndex.vue": [
+		"./resources/js/Pages/Client/CategoryIndex.vue",
+		"/js/vendor",
+		"resources_js_Pages_Client_CategoryIndex_vue"
+	],
+	"./Client/Dashboard": [
+		"./resources/js/Pages/Client/Dashboard.vue",
+		"resources_js_Pages_Client_Dashboard_vue"
+	],
+	"./Client/Dashboard.vue": [
+		"./resources/js/Pages/Client/Dashboard.vue",
+		"resources_js_Pages_Client_Dashboard_vue"
+	],
+	"./Client/ProductCreate": [
+		"./resources/js/Pages/Client/ProductCreate.vue",
+		"/js/vendor",
+		"resources_js_Pages_Client_ProductCreate_vue"
+	],
+	"./Client/ProductCreate.vue": [
+		"./resources/js/Pages/Client/ProductCreate.vue",
+		"/js/vendor",
+		"resources_js_Pages_Client_ProductCreate_vue"
+	],
+	"./Client/ProductIndex": [
+		"./resources/js/Pages/Client/ProductIndex.vue",
+		"/js/vendor",
+		"resources_js_Pages_Client_ProductIndex_vue"
+	],
+	"./Client/ProductIndex.vue": [
+		"./resources/js/Pages/Client/ProductIndex.vue",
+		"/js/vendor",
+		"resources_js_Pages_Client_ProductIndex_vue"
+	],
+	"./Client/StoreCreate": [
+		"./resources/js/Pages/Client/StoreCreate.vue",
+		"/js/vendor",
+		"resources_js_Pages_Client_StoreCreate_vue"
+	],
+	"./Client/StoreCreate.vue": [
+		"./resources/js/Pages/Client/StoreCreate.vue",
+		"/js/vendor",
+		"resources_js_Pages_Client_StoreCreate_vue"
+	],
+	"./Client/StoreIndex": [
+		"./resources/js/Pages/Client/StoreIndex.vue",
+		"/js/vendor",
+		"resources_js_Pages_Client_StoreIndex_vue"
+	],
+	"./Client/StoreIndex.vue": [
+		"./resources/js/Pages/Client/StoreIndex.vue",
+		"/js/vendor",
+		"resources_js_Pages_Client_StoreIndex_vue"
+	],
+	"./Client/StoreUpdate": [
+		"./resources/js/Pages/Client/StoreUpdate.vue",
+		"/js/vendor",
+		"resources_js_Pages_Client_StoreUpdate_vue"
+	],
+	"./Client/StoreUpdate.vue": [
+		"./resources/js/Pages/Client/StoreUpdate.vue",
+		"/js/vendor",
+		"resources_js_Pages_Client_StoreUpdate_vue"
 	],
 	"./Home": [
 		"./resources/js/Pages/Home.vue",
@@ -217,6 +431,22 @@ var map = {
 	"./Login.vue": [
 		"./resources/js/Pages/Login.vue",
 		"resources_js_Pages_Login_vue"
+	],
+	"./Register": [
+		"./resources/js/Pages/Register.vue",
+		"resources_js_Pages_Register_vue"
+	],
+	"./Register.vue": [
+		"./resources/js/Pages/Register.vue",
+		"resources_js_Pages_Register_vue"
+	],
+	"./Stores": [
+		"./resources/js/Pages/Stores.vue",
+		"resources_js_Pages_Stores_vue"
+	],
+	"./Stores.vue": [
+		"./resources/js/Pages/Stores.vue",
+		"resources_js_Pages_Stores_vue"
 	]
 };
 function webpackAsyncContext(req) {
@@ -229,7 +459,7 @@ function webpackAsyncContext(req) {
 	}
 
 	var ids = map[req], id = ids[0];
-	return __webpack_require__.e(ids[1]).then(() => {
+	return Promise.all(ids.slice(1).map(__webpack_require__.e)).then(() => {
 		return __webpack_require__(id);
 	});
 }

@@ -1,6 +1,6 @@
 <template>
     <Head title="Dashboard"/>
-    <StatCardGrid/>
+    <StatCardGrid :totalRevenue="totalRevenue" :myTotalRevenue="myTotalRevenue"/>
 
 
 </template>
@@ -14,6 +14,10 @@ export default {
     layout: AdminLayout,
     components: {
         StatCardGrid
+    },
+    props: {
+        totalRevenue: Number,
+        myTotalRevenue: Number
     }
 }
 </script>

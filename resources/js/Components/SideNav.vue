@@ -98,9 +98,7 @@
 </g>
 </svg>
         </div>
-
-        <SideNavList :links="links" heading="Admin" />
-        <SideNavList :links="adminLinks" heading="Profile" />
+        <slot/>
 
     </section>
 </template>
@@ -112,28 +110,9 @@ export default {
     components: {SideNavList},
     data() {
         return {
-            links: [
-                {
-                    url: '/dashboard',
-                    title: 'Dashboard'
-                },
-                {
-                    url: '/users',
-                    title: 'Users'
-                },
-                {
-                    url: '/stores',
-                    title: 'Stores'
-                }
-            ],
-            adminLinks: [
-                {
-                    url: '/profile',
-                    title: 'Profile'
-                },
-            ]
+
         }
-    }
+    },
 }
 </script>
 

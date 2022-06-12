@@ -1,5 +1,5 @@
 <template>
-    <div class="p-10 border rounded-3xl">
+    <div class="p-10 border rounded-3xl mx-auto">
         <h3 class="text-center text-3xl">
             {{ heading }}
         </h3>

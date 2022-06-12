@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->integer('quantity')->default(0);
             $table->float('price');
             $table->string('img_url');
-            $table->foreignId('category_id')->nullable()->constrained();
+            $table->foreignId('category_id')->nullable()->constrained()->cascadeOnDelete();
             $table->foreignId('store_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });

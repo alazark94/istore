@@ -19,22 +19,7 @@ __webpack_require__.r(__webpack_exports__);
     SideNavList: _Components_SideNavList__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
-    return {
-      links: [{
-        url: '/dashboard',
-        title: 'Dashboard'
-      }, {
-        url: '/users',
-        title: 'Users'
-      }, {
-        url: '/stores',
-        title: 'Stores'
-      }],
-      adminLinks: [{
-        url: '/profile',
-        title: 'Profile'
-      }]
-    };
+    return {};
   }
 });
 
@@ -121,6 +106,10 @@ __webpack_require__.r(__webpack_exports__);
   name: "StatCardGrid",
   components: {
     StatCard: _Components_StatCard__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  props: {
+    totalRevenue: Number,
+    myTotalRevenue: Number
   }
 });
 
@@ -145,6 +134,10 @@ __webpack_require__.r(__webpack_exports__);
   layout: _Shared_AdminLayout__WEBPACK_IMPORTED_MODULE_0__["default"],
   components: {
     StatCardGrid: _Components_StatCardGrid__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  props: {
+    totalRevenue: Number,
+    myTotalRevenue: Number
   }
 });
 
@@ -162,6 +155,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Components_SideNav__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Components/SideNav */ "./resources/js/Components/SideNav.vue");
 /* harmony import */ var _Shared_Nav__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Shared/Nav */ "./resources/js/Shared/Nav.vue");
+/* harmony import */ var _Components_SideNavList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Components/SideNavList */ "./resources/js/Components/SideNavList.vue");
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -169,7 +164,39 @@ __webpack_require__.r(__webpack_exports__);
   layout: null,
   components: {
     SideNav: _Components_SideNav__WEBPACK_IMPORTED_MODULE_0__["default"],
-    Nav: _Shared_Nav__WEBPACK_IMPORTED_MODULE_1__["default"]
+    Nav: _Shared_Nav__WEBPACK_IMPORTED_MODULE_1__["default"],
+    SideNavList: _Components_SideNavList__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
+  data: function data() {
+    return {
+      links: [{
+        url: '/dashboard',
+        title: 'Dashboard'
+      }, {
+        url: '/stores',
+        title: 'Stores'
+      }, {
+        url: '/users',
+        title: "Users"
+      }, {
+        url: '/users?admins_only=true',
+        title: "Admins"
+      }],
+      adminLinks: [{
+        url: '/profile',
+        title: 'Profile'
+      }],
+      storeLinks: [{
+        url: "/users/".concat(this.$page.props.auth.user.id, "/stores"),
+        title: 'My Stores'
+      }, {
+        url: '/orders',
+        title: 'Order'
+      }]
+    };
+  },
+  mounted: function mounted() {
+    console.log(this.$page.props.auth.user);
   }
 });
 
@@ -265,19 +292,7 @@ var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVN
 
 var _hoisted_34 = [_hoisted_4];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_SideNavList = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("SideNavList");
-
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", _hoisted_3, _hoisted_34))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_SideNavList, {
-    links: $data.links,
-    heading: "Admin"
-  }, null, 8
-  /* PROPS */
-  , ["links"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_SideNavList, {
-    links: $data.adminLinks,
-    heading: "Profile"
-  }, null, 8
-  /* PROPS */
-  , ["links"])]);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", _hoisted_3, _hoisted_34))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")]);
 }
 
 /***/ }),
@@ -336,11 +351,11 @@ var _hoisted_1 = {
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
     href: $props.link.url
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.link.title), 1
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.link.title), 1
       /* TEXT */
       )];
     }),
@@ -349,7 +364,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["href"]);
+  , ["href"])]);
 }
 
 /***/ }),
@@ -367,7 +382,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "p-10 border rounded-3xl"
+  "class": "p-10 border rounded-3xl mx-auto"
 };
 var _hoisted_2 = {
   "class": "text-center text-3xl"
@@ -404,21 +419,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_StatCard = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("StatCard");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_StatCard, {
-    heading: "Total Sales",
-    number: "999"
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_StatCard, {
-    heading: "Total Sales",
-    number: "999"
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_StatCard, {
-    heading: "Total Sales",
-    number: "999"
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_StatCard, {
-    heading: "Total Sales",
-    number: "999"
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_StatCard, {
-    heading: "Total Sales",
-    number: "999"
-  })]);
+    heading: "Total Revenue",
+    number: $props.totalRevenue
+  }, null, 8
+  /* PROPS */
+  , ["number"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_StatCard, {
+    heading: "My Total Revenue",
+    number: $props.myTotalRevenue
+  }, null, 8
+  /* PROPS */
+  , ["number"])]);
 }
 
 /***/ }),
@@ -442,7 +452,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Head, {
     title: "Dashboard"
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_StatCardGrid)], 64
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_StatCardGrid, {
+    totalRevenue: $props.totalRevenue,
+    myTotalRevenue: $props.myTotalRevenue
+  }, null, 8
+  /* PROPS */
+  , ["totalRevenue", "myTotalRevenue"])], 64
   /* STABLE_FRAGMENT */
   );
 }
@@ -465,35 +480,79 @@ var _hoisted_1 = {
   "class": "flex divide-x-2 divide-gray-400"
 };
 var _hoisted_2 = {
+  "class": "flex justify-center"
+};
+
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Create Store ");
+
+var _hoisted_4 = {
   "class": "w-full"
 };
-var _hoisted_3 = {
+var _hoisted_5 = {
   "class": "bg-gray-900 p-6"
 };
-var _hoisted_4 = {
+var _hoisted_6 = {
   "class": "flex justify-between"
 };
-var _hoisted_5 = {
+var _hoisted_7 = {
   "class": "flex items-center text-white"
 };
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
   "class": "text-lg font-bold"
 }, "iStore", -1
 /* HOISTED */
 );
 
-var _hoisted_7 = {
+var _hoisted_9 = {
   "class": "ml-4 text-sm"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_SideNavList = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("SideNavList");
+
+  var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
+
   var _component_SideNav = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("SideNav");
 
   var _component_Nav = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Nav");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_SideNav, {
     "class": "w-60 min-h-screen"
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_7, " Welcome back, " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$page.props.auth.user.username), 1
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_SideNavList, {
+        links: $data.links,
+        heading: "Admin"
+      }, null, 8
+      /* PROPS */
+      , ["links"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_SideNavList, {
+        links: $data.adminLinks,
+        heading: "Profile"
+      }, null, 8
+      /* PROPS */
+      , ["links"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_SideNavList, {
+        links: $data.storeLinks,
+        heading: "Store"
+      }, null, 8
+      /* PROPS */
+      , ["links"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+        "class": "border border-gray-400 rounded mx-auto px-4 py-2 bg-blue-600 hover:bg-blue-900",
+        href: "/users/".concat(_ctx.$page.props.auth.user.id, "/stores/create")
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_3];
+        }),
+        _: 1
+        /* STABLE */
+
+      }, 8
+      /* PROPS */
+      , ["href"])])];
+    }),
+    _: 1
+    /* STABLE */
+
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_9, " Welcome back, " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$page.props.auth.user.username), 1
   /* TEXT */
   )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Nav, {
     "class": "text-white"

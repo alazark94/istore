@@ -1,11 +1,11 @@
 <template>
-    <Link :href="link.url">
-        <li class="py-2 px-4 w-full hover:bg-gray-500">
 
+    <li class="py-2 px-4 w-full hover:bg-gray-500">
+        <Link :href="link.url">
             {{ link.title }}
+        </Link>
+    </li>
 
-        </li>
-    </Link>
 </template>
 
 <script>
@@ -13,7 +13,7 @@ export default {
     name: "SideNavListItem",
     props: {
         heading: String,
-        link: Object
+        link: Object,
     }
 }
 </script>

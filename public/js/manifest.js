@@ -65,6 +65,18 @@
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -95,7 +107,7 @@
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames based on template
-/******/ 			return "js/app/" + chunkId + ".js?id=" + {"resources_js_Pages_Admin_Dashboard_vue":"ab419fa541c54b25","resources_js_Pages_Home_vue":"80d1dec5afacaba9","resources_js_Pages_Login_vue":"16aae8a9d6a6199f"}[chunkId] + "";
+/******/ 			return "js/app/" + chunkId + ".js?id=" + {"resources_js_Pages_Admin_CategoryCreate_vue":"7a7067d25443cd6a","resources_js_Pages_Admin_CategoryIndex_vue":"de32ca805848478d","resources_js_Pages_Admin_CustomerIndex_vue":"204b0721ad19d0cf","resources_js_Pages_Admin_Dashboard_vue":"b1a6f2e1749e0bae","resources_js_Pages_Admin_OrderIndex_vue":"32751abdbbf3ad9d","resources_js_Pages_Admin_ProductCreate_vue":"9244e95a7cd49e08","resources_js_Pages_Admin_ProductIndex_vue":"e2517b78960daa92","resources_js_Pages_Admin_ProductUpdate_vue":"6e05934dc9021ab4","resources_js_Pages_Admin_Store_vue":"1c0ea8706966f1ed","resources_js_Pages_Admin_StoreCreate_vue":"231f092b7a94564b","resources_js_Pages_Admin_StoreUpdate_vue":"6a70014fd8f689f6","resources_js_Pages_Admin_User_vue":"e3083ea0690b0aee","resources_js_Pages_Admin_UserCreate_vue":"ea2b1630e4902928","resources_js_Pages_Cart_vue":"707cba397c3646b0","resources_js_Pages_Checkout_vue":"ee1fdcf4187bc2c1","resources_js_Pages_Client_CategoryCreate_vue":"c14a76876a4e2276","resources_js_Pages_Client_CategoryIndex_vue":"7cf19ab698fee402","resources_js_Pages_Client_Dashboard_vue":"4dfab6bc5f8719c0","resources_js_Pages_Client_ProductCreate_vue":"eb940554bb42d0ea","resources_js_Pages_Client_ProductIndex_vue":"adc65ee191bee48e","resources_js_Pages_Client_StoreCreate_vue":"3eefbf0e129ccd74","resources_js_Pages_Client_StoreIndex_vue":"b9f4bceb4569a2f3","resources_js_Pages_Client_StoreUpdate_vue":"1dadcb3218f5ce1a","resources_js_Pages_Home_vue":"7acedc7510275ea8","resources_js_Pages_Login_vue":"1e6b4244f054f5c4","resources_js_Pages_Register_vue":"8284098fcf76b746","resources_js_Pages_Stores_vue":"b45026ad6f46358b"}[chunkId] + "";
 /******/ 		};
 /******/ 	})();
 /******/ 	

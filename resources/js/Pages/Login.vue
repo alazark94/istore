@@ -45,13 +45,18 @@
                     >{{ form.errors.password }}</span
                     >
                 </div>
-                <button
-                    type="submit"
-                    class="bg-blue-400 text-white rounded py-2 px-4 hover:bg-blue-500 disabled:bg-gray-200 disabled:text-gray-700"
-                    :disabled="form.processing"
-                >
-                    Submit
-                </button>
+                <div class="flex justify-between items-center">
+                    <button
+                        type="submit"
+                        class="bg-blue-400 text-white rounded py-2 px-4 hover:bg-blue-500 disabled:bg-gray-200 disabled:text-gray-700"
+                        :disabled="form.processing"
+                    >
+                        Submit
+                    </button>
+                    <Link href="/" class="text-blue-600 hover:underline">
+                        Go to home
+                    </Link>
+                </div>
             </form>
         </section>
     </main>
