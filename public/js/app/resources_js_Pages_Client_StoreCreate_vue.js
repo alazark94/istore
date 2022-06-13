@@ -114,7 +114,7 @@ var __default__ = {
             icon: 'success',
             title: 'Success',
             text: 'New Store Added',
-            footer: '<a href="/admin/dashboard">Go to dashboard</a>'
+            footer: '<a href="/dashboard">Go to dashboard</a>'
           });
         }
       });
@@ -178,7 +178,7 @@ __webpack_require__.r(__webpack_exports__);
         title: "Admins"
       }],
       adminLinks: [{
-        url: '/profile',
+        url: '/profile-update',
         title: 'Profile'
       }],
       storeLinks: [{
@@ -224,7 +224,7 @@ __webpack_require__.r(__webpack_exports__);
         url: '/dashboard',
         title: 'Dashboard'
       }, {
-        url: '/profile',
+        url: '/profile-update',
         title: 'Profile'
       }, {
         url: "/users/".concat(this.$page.props.auth.user.id, "/stores"),

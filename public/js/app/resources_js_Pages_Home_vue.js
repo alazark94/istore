@@ -285,6 +285,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" $" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.product.price) + " ", 1
   /* TEXT */
   ), _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+    disabled: $props.product.quantity < 1,
     href: "/add-to-cart/".concat($props.product.id),
     method: "post",
     as: "button",
@@ -298,7 +299,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["href"])])])]);
+  , ["disabled", "href"])])])]);
 }
 
 /***/ }),

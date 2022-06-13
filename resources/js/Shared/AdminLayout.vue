@@ -65,7 +65,7 @@ export default {
             ],
             adminLinks: [
                 {
-                    url: '/profile',
+                    url: '/profile-update',
                     title: 'Profile',
 
                 }

@@ -47,7 +47,7 @@ export default {
 
                 },
                 {
-                    url: '/profile',
+                    url: '/profile-update',
                     title: 'Profile'
                 },
                 {

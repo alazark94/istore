@@ -21,7 +21,8 @@ Route::post('/checkout', [\App\Http\Controllers\StoreFrontController::class, 'pr
 
 Route::get('/login', [\App\Http\Controllers\Auth\LoginController::class, 'showLogin']);
 Route::post('/login', [\App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
-
+Route::get('/profile-update', [\App\Http\Controllers\UserController::class, 'edit']);
+Route::put('/profile-update', [\App\Http\Controllers\UserController::class, 'update']);
 
 Route::get('/dashboard', function () {
 

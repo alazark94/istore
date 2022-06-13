@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Inertia\Response;
 use Inertia\ResponseFactory;
@@ -97,23 +98,39 @@ class UserController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response|Response|ResponseFactory
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        return inertia(auth()->user()->role_id === 1 ?'Admin/ProfileUpdate'
+            : 'Client/ProfileUpdate', [
+            'user' => auth()->user()
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request): RedirectResponse
     {
-        //
+        $validated = $request->validate([
+            'name' => ['required_without_all:email, password, confirm_password'],
+            'email' => ['required_without_all:name, password, confirm_password', 'email', Rule::unique('users', 'email')->ignore(auth()->id())],
+            'password' => ['required_without_all:name, email', 'confirmed']
+        ]);
+
+        $user = User::find(auth()->id());
+
+        $user->update([
+            'name' => $validated['name'] ?? $user->name,
+            'email' => $validated['email'] ?? $user->email,
+            'password' => !is_null($validated['password']) ? Hash::make($validated['password']) : $user->password
+        ]);
+
+        return redirect()->back()->with('success', 'Success');
     }
 
     /**

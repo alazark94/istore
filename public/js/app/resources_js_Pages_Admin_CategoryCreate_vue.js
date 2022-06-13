@@ -112,7 +112,7 @@ var __default__ = {
             icon: 'success',
             title: 'Success',
             text: 'New Category Added',
-            footer: '<a href="/admin/dashboard">Go to dashboard</a>'
+            footer: '<a href="/dashboard">Go to dashboard</a>'
           });
         }
       });
@@ -176,7 +176,7 @@ __webpack_require__.r(__webpack_exports__);
         title: "Admins"
       }],
       adminLinks: [{
-        url: '/profile',
+        url: '/profile-update',
         title: 'Profile'
       }],
       storeLinks: [{

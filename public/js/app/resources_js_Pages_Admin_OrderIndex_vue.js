@@ -217,7 +217,7 @@ __webpack_require__.r(__webpack_exports__);
         title: "Admins"
       }],
       adminLinks: [{
-        url: '/profile',
+        url: '/profile-update',
         title: 'Profile'
       }],
       storeLinks: [{
