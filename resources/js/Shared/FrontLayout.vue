@@ -38,6 +38,7 @@
                 </div>
             </header>
         </section>
+        <ThePopUp class="ml-auto" @clicked="isVisible = true" v-show="isVisible"/>
         <slot/>
     </main>
     <footer class="w-full bg-gray-900 py-6">
@@ -60,9 +61,9 @@ export default {
 </script>
 
 <script setup>
-import {computed} from "vue";
+import ThePopUp from "@/Components/ThePopUp";
+import {computed, ref} from "vue";
 import {usePage} from "@inertiajs/inertia-vue3";
-
 const cartQuantity = computed(() => {
     let amount = 0;
     usePage().props.value.cart != null
@@ -73,6 +74,7 @@ const cartQuantity = computed(() => {
 
     return amount;
 })
+let isVisible = false;
 </script>
 
 <style scoped>

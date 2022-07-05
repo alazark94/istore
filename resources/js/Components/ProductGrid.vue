@@ -1,6 +1,7 @@
 <template>
+
 <div class="grid grid-cols-3 gap-4">
-    <Product v-for="product in props.products" :product="product"/>
+    <Product @visible="$parent.$emit('clicked')" v-for="product in props.products" :product="product"/>
 </div>
 </template>
 
@@ -13,6 +14,7 @@ export default {
 
 <script setup>
 import Product from "@/Components/Product";
+import ThePopUp from "@/Components/ThePopUp";
 import {defineProps} from "vue";
 
 let props = defineProps({

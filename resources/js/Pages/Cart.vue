@@ -7,12 +7,15 @@
                 <div>
                     <h1 class="font-black text-3xl">{{ item.name }}</h1>
                     <div class="text-lg">
-                        Quantity: {{ item.quantity }}
+                        Quantity: <input @change="changed($event, item.id)" type="number" class="border-2 border-gray-400 rounded-lg w-24 text-center" :value="item.quantity" min="1">
                     </div>
+                    <Link :href="`/remove-from-cart/${item.id}`" class="text-red-600" method="post" as="button">Remove</Link>
                 </div>
                 <div>
                     <h3 class="font-medium text-3xl">{{ item.quantity * item.price }}</h3>
+
                 </div>
+
             </div>
             <div class="flex justify-around">
                 <h1 class="font-black text-3xl">Total</h1>
@@ -42,6 +45,8 @@ export default {
 <script setup>
 
 import {computed, defineProps} from "vue";
+import {Inertia} from "@inertiajs/inertia";
+import Swal from "sweetalert2";
 
 let props = defineProps({
     cartItems: Array
@@ -50,7 +55,11 @@ let props = defineProps({
 const totalItems = computed(() => {
     return props.cartItems == null ? false : props.cartItems.length;
 })
-
+let changed = ($event, id) => {
+    Inertia.post(`/add-to-cart/${id}`, {
+        quantity: $event.target.value
+    })
+}
 const totalPrice = computed(() => {
     let totalPrice = 0;
     props.cartItems.map(item => {

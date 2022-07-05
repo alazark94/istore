@@ -62,6 +62,7 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::post('/add-to-cart/{id}', [\App\Http\Controllers\CartController::class, 'addToCart']);
+Route::post('/remove-from-cart/{id}', [\App\Http\Controllers\CartController::class, 'removeFromCart']);
 
 Route::get('/categories/{category}/products', [\App\Http\Controllers\StoreFrontController::class, 'categoryProducts']);
 Route::get('/{store}', [\App\Http\Controllers\StoreFrontController::class, 'storeProducts']);
