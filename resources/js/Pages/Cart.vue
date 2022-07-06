@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col items-center justify-center w-full m-10">
         <h1 class="font-black text-4xl mb-16">Cart</h1>
-        <div v-if="cartItems" class="divide-y divide-gray-400 space-y-10 w-10/12">
+        <div v-if="cartItems.length > 0" class="divide-y divide-gray-400 space-y-10 w-10/12">
 
             <div class=" flex justify-around " v-for="item in cartItems" :key="item.id">
                 <div>
@@ -22,8 +22,11 @@
                 <h3 class="font-medium text-3xl">{{ totalPrice }}</h3>
             </div>
         </div>
+        <div v-else>
+            <h1 class="text-3xl font-bold"> Nothing in Cart</h1>
+        </div>
         <div class="flex justify-around items-center w-1/2 mt-10">
-            <Link as="button" :disabled="cartItems === null" href="/checkout" class="px-10 py-5 bg-gray-900 text-white disabled:bg-gray-600">
+            <Link as="button" :disabled="cartItems === null || cartItems.length < 1" href="/checkout" class="px-10 py-5 bg-gray-900 text-white disabled:bg-gray-600">
                 Checkout
             </Link>
             <Link href="/" class="text-blue-600 hover:underline">Go Back Shopping</Link>
@@ -68,7 +71,6 @@ const totalPrice = computed(() => {
     return totalPrice;
 })
 
-console.log(props.cartItems);
 </script>
 
 <style scoped>

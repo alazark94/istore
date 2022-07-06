@@ -149,6 +149,8 @@ class StoreFrontController extends Controller
             // $products = json_decode($request->input('products'));
 
             foreach (json_decode($request->cookie('cart'), true) as $product)  {
+                $storeTotalPrice = 0;
+                $storeTotalPrice += $product['quantity'] * $product['price'];
                 $totalPrice += $product['quantity'] * $product['price'];
                 $product = Product::find($product['id']);
                 $store = Store::find($product['store_id']);
@@ -156,7 +158,7 @@ class StoreFrontController extends Controller
                 $store->orders()->create([
                     'customer_id' => $customer->id,
                     'product_id' => $product['id'],
-                    'total_price' => $totalPrice
+                    'total_price' => $storeTotalPrice
                 ]);
 
             }

@@ -38,7 +38,6 @@
                 </div>
             </header>
         </section>
-        <ThePopUp class="ml-auto" @clicked="isVisible = true" v-show="isVisible"/>
         <slot/>
     </main>
     <footer class="w-full bg-gray-900 py-6">
@@ -74,7 +73,8 @@ const cartQuantity = computed(() => {
 
     return amount;
 })
-let isVisible = false;
+
+
 </script>
 
 <style scoped>

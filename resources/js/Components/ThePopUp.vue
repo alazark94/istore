@@ -2,7 +2,7 @@
     <div class="w-96 border-2 border-gray-400 rounded-lg p-6 mt-3 shadow-lg">
         <div class="flex justify-between">
             <h1 class="text-3xl">Cart Items</h1>
-            <h1 class="text-2xl">X</h1>
+            <button @click="$emit('close')" class="text-2xl">X</button>
         </div>
         <div class="flex justify-between" v-for="item in cartItems">
             <p class="text-lg font-bold">{{ item.name }}</p>
