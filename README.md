@@ -2,7 +2,13 @@
 iStore
 </h1>
 
-To start first copy the `.env.example` file to `.env`.
+To start first copy the `.env.example` file to `.env` and run the following commands one by one.
+
+```
+composer install
+npm install
+npm run dev
+```
 
 After doing so, create a database and fill in the required spaces in the `.env` file.
 
