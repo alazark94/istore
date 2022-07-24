@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\StoreFrontController::class, 'home']);
+Route::get('/', [\App\Http\Controllers\StoreFrontController::class, 'home'])->name('home');
 Route::get('/list-stores', [\App\Http\Controllers\StoreFrontController::class, 'stores']);
 Route::get('/cart', [\App\Http\Controllers\StoreFrontController::class, 'cart']);
 Route::get('/checkout', [\App\Http\Controllers\StoreFrontController::class, 'checkout']);

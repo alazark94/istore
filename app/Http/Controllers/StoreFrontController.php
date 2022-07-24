@@ -10,6 +10,7 @@ use App\Models\Store;
 use Illuminate\Http\Request;
 use Inertia\Response;
 use Inertia\ResponseFactory;
+use Laravel\Cashier\Exceptions\IncompletePayment;
 
 class StoreFrontController extends Controller
 {
@@ -176,8 +177,15 @@ class StoreFrontController extends Controller
                 'total_price' => $storePrice
             ]);
         }
+            try {
 
-            $customer->charge($totalPrice *  100, $validated['paymentMethodID']);
+                $customer->charge($totalPrice *  100, $validated['paymentMethodID']);
+            }catch (IncompletePayment $e) {
+                return redirect()->route(
+                    'cashier.payment',
+                    [$e->payment->id, 'redirect' => route('home')]
+                );
+            }
 
 
 
