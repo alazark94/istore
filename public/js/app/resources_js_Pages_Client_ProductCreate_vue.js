@@ -116,7 +116,7 @@ var __default__ = {
           sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
             icon: 'success',
             title: 'Success',
-            text: 'New Store Added',
+            text: 'New Product Added',
             footer: '<a href="/dashboard">Go to dashboard</a>'
           });
         }

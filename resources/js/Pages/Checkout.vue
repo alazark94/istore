@@ -94,7 +94,7 @@
                             for="address_2"
                             class="block mb-2 uppercase font-bold text-xs text-gray-700"
                         >
-                            Address 1
+                            Address 2
                         </label>
                         <input
                             v-model="form.address_2"

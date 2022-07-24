@@ -461,7 +461,7 @@ var _hoisted_17 = {
 var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "address_2",
   "class": "block mb-2 uppercase font-bold text-xs text-gray-700"
-}, " Address 1 ", -1
+}, " Address 2 ", -1
 /* HOISTED */
 );
 

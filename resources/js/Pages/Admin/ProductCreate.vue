@@ -157,7 +157,7 @@ let submit = () => {
             Swal.fire({
                 icon: 'success',
                 title: 'Success',
-                text: 'New Store Added',
+                text: 'New Product Added',
                 footer: '<a href="/dashboard">Go to dashboard</a>'
             });
         },

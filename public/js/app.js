@@ -242,6 +242,16 @@ var map = {
 		"/js/vendor",
 		"resources_js_Pages_Admin_OrderIndex_vue"
 	],
+	"./Admin/OrderView": [
+		"./resources/js/Pages/Admin/OrderView.vue",
+		"/js/vendor",
+		"resources_js_Pages_Admin_OrderView_vue"
+	],
+	"./Admin/OrderView.vue": [
+		"./resources/js/Pages/Admin/OrderView.vue",
+		"/js/vendor",
+		"resources_js_Pages_Admin_OrderView_vue"
+	],
 	"./Admin/ProductCreate": [
 		"./resources/js/Pages/Admin/ProductCreate.vue",
 		"/js/vendor",

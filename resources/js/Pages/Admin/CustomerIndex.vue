@@ -2,6 +2,7 @@
 <template>
     <Head title="Stores"/>
     <div class="w-10/12 mt-10 align-middle mx-auto">
+        <StoreNav class="mb-5" :id="props.store_id"/>
         <ResourceHeading v-model="search" heading="Customers"/>
 
         <!-- This example requires Tailwind CSS v2.0+ -->
@@ -204,12 +205,14 @@ import Pagination from "@/Shared/Pagination";
 import {Inertia} from "@inertiajs/inertia";
 import {debounce} from "lodash";
 import ResourceHeading from "@/Components/ResourceHeading";
+import StoreNav from "@/Components/StoreNav";
 import Swal from "sweetalert2";
 
 let props = defineProps({
     customers: Object,
     filters: Object,
     can: Object,
+    store_id: Number
 });
 let search = ref(props.filters.search);
 const warn = (id) => {
@@ -234,6 +237,21 @@ const warn = (id) => {
         }
     })
 }
+watch(
+    search,
+    debounce((value) => {
+        Inertia.get(
+            "/stores/"+ props.store_id+"/customers",
+            {
+                search: value,
+            },
+            {
+                preserveState: true,
+                replace: true,
+            }
+        );
+    }, 250)
+);
 </script>
 
 <style></style>

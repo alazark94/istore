@@ -24,7 +24,7 @@ class CustomerController extends Controller
             : 'Client/CustomerIndex', [
             'customers' => $store->customers()->when(request('search'), function ($query, $search) {
                 $query->where('name', 'like', "%$search%");
-            })
+            })->distinct('email')
                 ->paginate(10)
                 ->withQueryString()
                 ->through(function ($customer) {
@@ -41,6 +41,7 @@ class CustomerController extends Controller
                     ];
                 }),
             'filters' => request()->only(['search']),
+            'store_id' => $store->id
         ]);
     }
 

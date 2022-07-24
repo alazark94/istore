@@ -148,9 +148,12 @@ class StoreFrontController extends Controller
             $totalPrice = 0;
             // $products = json_decode($request->input('products'));
 
+            $output = [];
+
             foreach (json_decode($request->cookie('cart'), true) as $lineItem)  {
+
+                $output[$lineItem['store_id']][] = $lineItem;
                 $storeTotalPrice = 0;
-                $storeTotalPrice += $lineItem['quantity'] * $lineItem['price'];
                 $totalPrice += $lineItem['quantity'] * $lineItem['price'];
                 $product = Product::find($lineItem['id']);
                 if($lineItem['quantity'] > $product->quantity) {
@@ -160,15 +163,19 @@ class StoreFrontController extends Controller
                 }
                 $product->quantity = $product->quantity - $lineItem['quantity'];
                 $product->save();
-                $store = Store::find($product['store_id']);
-                $store->customers()->attach($customer);
-                $store->orders()->create([
-                    'customer_id' => $customer->id,
-                    'product_id' => $product['id'],
-                    'total_price' => $storeTotalPrice
-                ]);
 
             }
+
+        foreach($output as $store => $products) {
+            $storePrice = array_sum(array_column($products, 'price'));
+            $store = Store::find($store);
+            $store->customers()->attach($customer);
+            $store->orders()->create([
+                'customer_id' => $customer->id,
+                'line_items' => json_encode($products),
+                'total_price' => $storePrice
+            ]);
+        }
 
             $customer->charge($totalPrice *  100, $validated['paymentMethodID']);
 

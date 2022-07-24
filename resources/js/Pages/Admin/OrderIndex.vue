@@ -2,6 +2,7 @@
 <template>
     <Head title="Stores"/>
     <div class="w-10/12 mt-10 align-middle mx-auto">
+        <StoreNav class="mb-5" :id="props.store_id"/>
         <ResourceHeading v-model="search" heading="Orders"/>
 
         <!-- This example requires Tailwind CSS v2.0+ -->
@@ -32,12 +33,6 @@
                                     scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
                                 >
-                                    Product
-                                </th>
-                                <th
-                                    scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
-                                >
                                     Ordered At
                                 </th>
 
@@ -52,39 +47,28 @@
                                 <td class="whitespace-nowrap px-6 py-4">
                                     <div class="flex items-center">
                                         <div>
-
+                                        <Link :href="'/orders/'+order.id">
                                             <div
                                                 class="text-sm font-medium text-gray-900"
                                             >
-
                                                 {{ order.id }}
-
                                             </div>
+                                        </Link>
                                         </div>
                                     </div>
                                 </td>
                                 <td class="whitespace-nowrap px-6 py-4">
                                     <div class="flex items-center">
                                         <div>
-
+                                            <Link :href="'/orders/'+order.id" class="hover:text-blue-600 hover:underline">
                                             <div
-                                                class="text-sm font-medium text-gray-900"
+                                                class="text-sm font-medium"
                                             >
 
                                                 {{ order.customer_name }}
 
                                             </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="whitespace-nowrap px-6 py-4">
-                                    <div class="flex items-center">
-                                        <div>
-                                            <div
-                                                class="text-sm font-medium text-gray-900"
-                                            >
-                                                {{ order.product_name }}
-                                            </div>
+                                            </Link>
                                         </div>
                                     </div>
                                 </td>
@@ -139,6 +123,7 @@ export default {
 <script setup>
 import {defineProps, ref, watch} from "vue";
 import Pagination from "@/Shared/Pagination";
+import StoreNav from "@/Components/StoreNav";
 import {Inertia} from "@inertiajs/inertia";
 import {debounce} from "lodash";
 import ResourceHeading from "@/Components/ResourceHeading";
@@ -147,6 +132,7 @@ import Swal from "sweetalert2";
 let props = defineProps({
     orders: Object,
     filters: Object,
+    store_id: Number
 });
 let search = ref(props.filters.search);
 const warn = (id) => {
@@ -171,6 +157,21 @@ const warn = (id) => {
         }
     })
 }
+watch(
+    search,
+    debounce((value) => {
+        Inertia.get(
+            "/stores/"+ props.store_id+"/orders",
+            {
+                search: value,
+            },
+            {
+                preserveState: true,
+                replace: true,
+            }
+        );
+    }, 250)
+);
 </script>
 
 <style></style>

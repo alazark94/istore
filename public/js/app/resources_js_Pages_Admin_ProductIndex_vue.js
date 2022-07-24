@@ -197,7 +197,7 @@ var __default__ = {
     };
 
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(search, (0,lodash__WEBPACK_IMPORTED_MODULE_4__.debounce)(function (value) {
-      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_3__.Inertia.get("/stores", {
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_3__.Inertia.get("/stores/".concat(props.store_id, "/products"), {
         search: value
       }, {
         preserveState: true,

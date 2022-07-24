@@ -171,7 +171,7 @@ watch(
     search,
     debounce((value) => {
         Inertia.get(
-            "/stores",
+            `/stores/${props.store_id}/products`,
             {
                 search: value,
             },
