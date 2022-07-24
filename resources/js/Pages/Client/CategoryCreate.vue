@@ -1,7 +1,10 @@
 <template>
-    <Head title="Create Store"/>
+    <Head title="Create Category"/>
     <section class="bg-white p-8 rounded-xl w-full lg:w-1/2 mx-auto my-3">
-        <h1 class="text-3xl mb-6">Create Category</h1>
+        <div class="flex justify-between">
+            <h1 class="text-3xl mb-6">Create Category</h1>
+            <Link class="text-blue-600 hover:underline" :href="`/stores/${props.store_id}/categories`">Go Back</Link>
+        </div>
 
         <form @submit.prevent="submit" >
 

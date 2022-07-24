@@ -227,7 +227,7 @@ export default {
 </script>
 <script setup>
 import {useForm, usePage} from "@inertiajs/inertia-vue3";
-import {onMounted, ref, computed} from "vue";
+import {onMounted, ref, computed, useAttrs} from "vue";
 import Swal from "sweetalert2";
 
 const totalPrice = computed(() => {
@@ -237,6 +237,8 @@ const totalPrice = computed(() => {
     })
     return totalPrice;
 });
+
+const attrs = useAttrs();
 
 const cartItems = computed(() => {
     let items = [];
@@ -311,7 +313,7 @@ const submit = () => {
                 Swal.fire({
                     title: 'Error',
                     icon: 'error',
-                    text: 'Nothing in your cart!'
+                    text: attrs.errors.stock
                 })
             }
         });

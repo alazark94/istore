@@ -79,6 +79,7 @@ var __default__ = {
       });
       return totalPrice;
     });
+    var attrs = (0,vue__WEBPACK_IMPORTED_MODULE_1__.useAttrs)();
     var cartItems = (0,vue__WEBPACK_IMPORTED_MODULE_1__.computed)(function () {
       var items = [];
       (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_0__.usePage)().props.value.cart != null ? (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_0__.usePage)().props.value.cart.forEach(function (item) {
@@ -144,7 +145,7 @@ var __default__ = {
             sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
               title: 'Error',
               icon: 'error',
-              text: 'Nothing in your cart!'
+              text: attrs.errors.stock
             });
           }
         });
@@ -154,6 +155,7 @@ var __default__ = {
 
     var __returned__ = {
       totalPrice: totalPrice,
+      attrs: attrs,
       cartItems: cartItems,
       form: form,
       cardElement: cardElement,
@@ -168,6 +170,7 @@ var __default__ = {
       onMounted: vue__WEBPACK_IMPORTED_MODULE_1__.onMounted,
       ref: vue__WEBPACK_IMPORTED_MODULE_1__.ref,
       computed: vue__WEBPACK_IMPORTED_MODULE_1__.computed,
+      useAttrs: vue__WEBPACK_IMPORTED_MODULE_1__.useAttrs,
       Swal: (sweetalert2__WEBPACK_IMPORTED_MODULE_2___default())
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {

@@ -15,7 +15,7 @@
             <section class="bg-gray-900 p-6">
                 <header class="flex justify-between">
                     <div class="flex items-center text-white">
-                        <h1 class="text-lg font-bold">iStore</h1>
+                        <Link href="/" class="text-lg font-bold">iStore</Link>
                         <p class="ml-4 text-sm">
                             Welcome back, {{ $page.props.auth.user.username }}
                         </p>

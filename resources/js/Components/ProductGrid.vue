@@ -1,7 +1,7 @@
 <template>
 
 <div class="grid grid-cols-3 gap-4">
-    <Product @visible="$emit('clicked')" v-for="product in props.products" :product="product"/>
+    <Product v-for="product in props.products" :product="product"/>
 </div>
 </template>
 

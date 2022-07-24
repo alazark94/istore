@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col items-center justify-center w-full m-10">
         <h1 class="font-black text-4xl mb-16">Cart</h1>
-        <div v-if="cartItems.length > 0" class="divide-y divide-gray-400 space-y-10 w-10/12">
+        <div v-if="cartItems != null" class="divide-y divide-gray-400 space-y-10 w-10/12">
 
             <div class=" flex justify-around " v-for="item in cartItems" :key="item.id">
                 <div>
@@ -55,9 +55,9 @@ let props = defineProps({
     cartItems: Array
 });
 
-const totalItems = computed(() => {
-    return props.cartItems == null ? false : props.cartItems.length;
-})
+// const totalItems = computed(() => {
+//     return props.cartItems == null ? false : props.cartItems.length;
+// })
 let changed = ($event, id) => {
     Inertia.post(`/add-to-cart/${id}`, {
         quantity: $event.target.value

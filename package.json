@@ -24,6 +24,7 @@
         "@inertiajs/progress": "^0.2.7",
         "mitt": "^3.0.0",
         "sweetalert2": "^11.4.17",
+        "unoverlay-vue": "^0.1.1",
         "vue": "^3.2.36"
     }
 }

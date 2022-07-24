@@ -1,7 +1,10 @@
 <template>
     <Head title="Update Product"/>
     <section class="bg-white p-8 rounded-xl w-full lg:w-10/12 mx-auto my-3">
-        <h1 class="text-3xl mb-6">Update Product</h1>
+        <div class="flex justify-between">
+            <h1 class="text-3xl mb-6">Update Product</h1>
+            <Link class="text-blue-600 hover:underline" :href="`/stores/${product.store_id}/products`">Go Back</Link>
+        </div>
 
         <form @submit.prevent="submit" class="grid grid-cols-2 gap-10">
             <div>

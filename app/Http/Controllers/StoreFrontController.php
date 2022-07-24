@@ -148,11 +148,18 @@ class StoreFrontController extends Controller
             $totalPrice = 0;
             // $products = json_decode($request->input('products'));
 
-            foreach (json_decode($request->cookie('cart'), true) as $product)  {
+            foreach (json_decode($request->cookie('cart'), true) as $lineItem)  {
                 $storeTotalPrice = 0;
-                $storeTotalPrice += $product['quantity'] * $product['price'];
-                $totalPrice += $product['quantity'] * $product['price'];
-                $product = Product::find($product['id']);
+                $storeTotalPrice += $lineItem['quantity'] * $lineItem['price'];
+                $totalPrice += $lineItem['quantity'] * $lineItem['price'];
+                $product = Product::find($lineItem['id']);
+                if($lineItem['quantity'] > $product->quantity) {
+                    return redirect()->back()->withErrors([
+                        "stock" => "$product->name has low stock quantity"
+                    ]);
+                }
+                $product->quantity = $product->quantity - $lineItem['quantity'];
+                $product->save();
                 $store = Store::find($product['store_id']);
                 $store->customers()->attach($customer);
                 $store->orders()->create([
