@@ -101,7 +101,12 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return inertia(auth()->user()->role_id === 1
+            ? 'Admin/CategoryUpdate'
+            : 'Client/CategoryUpdate', [
+            'category' => $category,
+            'store_id' => $category->store->id
+        ]);
     }
 
     /**
@@ -113,7 +118,15 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required',
+        ]);
+
+        $category->update([
+            'name' => $validated['name'] ?? $category->name
+        ]);
+
+        return redirect()->back()->with('success', 'Success');
     }
 
     /**
