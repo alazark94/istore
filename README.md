@@ -24,6 +24,7 @@ After that run the following commands one by one.
 ```
 php artisan key:generate
 php artisan migrate --seed
+php artisan storage:link
 ```
 
 You have now a working Database with sample admin and client users in it. Below are the credentials to test.
