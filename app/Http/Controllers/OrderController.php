@@ -70,7 +70,9 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        return inertia('Admin/OrderView', [
+        return inertia(auth()->user()->role_id === 1
+            ? 'Admin/OrderView'
+            : 'Client/OrderView', [
             'order' => $order->load('customer')
         ]);
     }

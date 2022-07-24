@@ -3,17 +3,19 @@
         <SideNav class="w-60 min-h-screen">
             <SideNavList :links="links" heading="Management" />
             <div class="flex justify-center">
-                <Link class="border border-gray-400 rounded mx-auto px-4 py-2 bg-blue-600 hover:bg-blue-900" :href="`/users/${$page.props.auth.user.id}/stores/create`">
+                <Link
+                    class="border border-gray-400 rounded mx-auto px-4 py-2 bg-blue-600 hover:bg-blue-900"
+                    :href="`/users/${$page.props.auth.user.id}/stores/create`"
+                >
                     Create Store
                 </Link>
             </div>
-
         </SideNav>
         <main class="w-full">
             <section class="bg-gray-900 p-6">
                 <header class="flex justify-between">
                     <div class="flex items-center text-white">
-                        <h1 class="text-lg font-bold">iStore</h1>
+                        <Link href="/" class="text-lg font-bold">iStore</Link>
                         <p class="ml-4 text-sm">
                             Welcome back, {{ $page.props.auth.user.username }}
                         </p>
@@ -21,7 +23,7 @@
                     <Nav class="text-white" />
                 </header>
             </section>
-            <slot/>
+            <slot />
         </main>
     </div>
 </template>
@@ -36,33 +38,30 @@ export default {
     components: {
         SideNav,
         Nav,
-        SideNavList
+        SideNavList,
     },
     data() {
         return {
             links: [
                 {
-                    url: '/dashboard',
-                    title: 'Dashboard',
-
+                    url: "/dashboard",
+                    title: "Dashboard",
                 },
                 {
-                    url: '/profile-update',
-                    title: 'Profile'
+                    url: "/profile-update",
+                    title: "Profile",
                 },
                 {
                     url: `/users/${this.$page.props.auth.user.id}/stores`,
-                    title: 'My Stores'
+                    title: "My Stores",
                 },
             ],
-        }
+        };
     },
     mounted() {
         console.log(this.$page.props.auth.user);
-    }
-}
+    },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
