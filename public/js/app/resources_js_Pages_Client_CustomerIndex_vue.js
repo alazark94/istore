@@ -129,7 +129,8 @@ var __default__ = {
   props: {
     customers: Object,
     filters: Object,
-    can: Object
+    can: Object,
+    store_id: Number
   },
   setup: function setup(__props, _ref) {
     var expose = _ref.expose;
@@ -138,23 +139,31 @@ var __default__ = {
     var search = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(props.filters.search);
 
     var warn = function warn(id) {
-      console.log('clicked');
+      console.log("clicked");
       sweetalert2__WEBPACK_IMPORTED_MODULE_5___default().fire({
-        title: 'Are you sure?',
+        title: "Are you sure?",
         text: "You won't be able to revert this!",
-        icon: 'warning',
+        icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
       }).then(function (result) {
         if (result.isConfirmed) {
           _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia["delete"]("/customer/".concat(id));
-          sweetalert2__WEBPACK_IMPORTED_MODULE_5___default().fire('Deleted!', 'You have successfully deleted the store and all it\'s products.', 'success');
+          sweetalert2__WEBPACK_IMPORTED_MODULE_5___default().fire("Deleted!", "You have successfully deleted the store and all it's products.", "success");
         }
       });
     };
 
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(search, (0,lodash__WEBPACK_IMPORTED_MODULE_3__.debounce)(function (value) {
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.get("/stores/".concat(props.store_id, "/customers"), {
+        search: value
+      }, {
+        preserveState: true,
+        replace: true
+      });
+    }, 250));
     var __returned__ = {
       props: props,
       search: search,
@@ -205,14 +214,14 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       links: [{
-        url: '/dashboard',
-        title: 'Dashboard'
+        url: "/dashboard",
+        title: "Dashboard"
       }, {
-        url: '/profile-update',
-        title: 'Profile'
+        url: "/profile-update",
+        title: "Profile"
       }, {
         url: "/users/".concat(this.$page.props.auth.user.id, "/stores"),
-        title: 'My Stores'
+        title: "My Stores"
       }]
     };
   },
@@ -632,9 +641,16 @@ var _hoisted_37 = [_hoisted_36];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
 
+  var _component_StoreNav = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("StoreNav");
+
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Head, {
     title: "Customers"
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ResourceHeading"], {
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_StoreNav, {
+    "class": "mb-5",
+    id: $setup.props.store_id
+  }, null, 8
+  /* PROPS */
+  , ["id"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ResourceHeading"], {
     modelValue: $setup.search,
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
       return $setup.search = $event;
@@ -717,11 +733,7 @@ var _hoisted_7 = {
   "class": "flex items-center text-white"
 };
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
-  "class": "text-lg font-bold"
-}, "iStore", -1
-/* HOISTED */
-);
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("iStore");
 
 var _hoisted_9 = {
   "class": "ml-4 text-sm"
@@ -761,7 +773,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_9, " Welcome back, " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$page.props.auth.user.username), 1
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+    href: "/",
+    "class": "text-lg font-bold"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_8];
+    }),
+    _: 1
+    /* STABLE */
+
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_9, " Welcome back, " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$page.props.auth.user.username), 1
   /* TEXT */
   )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Nav, {
     "class": "text-white"

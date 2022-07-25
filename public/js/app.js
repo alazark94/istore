@@ -214,6 +214,16 @@ var map = {
 		"/js/vendor",
 		"resources_js_Pages_Admin_CategoryIndex_vue"
 	],
+	"./Admin/CategoryUpdate": [
+		"./resources/js/Pages/Admin/CategoryUpdate.vue",
+		"/js/vendor",
+		"resources_js_Pages_Admin_CategoryUpdate_vue"
+	],
+	"./Admin/CategoryUpdate.vue": [
+		"./resources/js/Pages/Admin/CategoryUpdate.vue",
+		"/js/vendor",
+		"resources_js_Pages_Admin_CategoryUpdate_vue"
+	],
 	"./Admin/CustomerIndex": [
 		"./resources/js/Pages/Admin/CustomerIndex.vue",
 		"/js/vendor",
@@ -380,6 +390,16 @@ var map = {
 		"/js/vendor",
 		"resources_js_Pages_Client_CategoryIndex_vue"
 	],
+	"./Client/CategoryUpdate": [
+		"./resources/js/Pages/Client/CategoryUpdate.vue",
+		"/js/vendor",
+		"resources_js_Pages_Client_CategoryUpdate_vue"
+	],
+	"./Client/CategoryUpdate.vue": [
+		"./resources/js/Pages/Client/CategoryUpdate.vue",
+		"/js/vendor",
+		"resources_js_Pages_Client_CategoryUpdate_vue"
+	],
 	"./Client/CustomerIndex": [
 		"./resources/js/Pages/Client/CustomerIndex.vue",
 		"/js/vendor",
@@ -437,6 +457,16 @@ var map = {
 		"./resources/js/Pages/Client/ProductIndex.vue",
 		"/js/vendor",
 		"resources_js_Pages_Client_ProductIndex_vue"
+	],
+	"./Client/ProductUpdate": [
+		"./resources/js/Pages/Client/ProductUpdate.vue",
+		"/js/vendor",
+		"resources_js_Pages_Client_ProductUpdate_vue"
+	],
+	"./Client/ProductUpdate.vue": [
+		"./resources/js/Pages/Client/ProductUpdate.vue",
+		"/js/vendor",
+		"resources_js_Pages_Client_ProductUpdate_vue"
 	],
 	"./Client/ProfileUpdate": [
 		"./resources/js/Pages/Client/ProfileUpdate.vue",
