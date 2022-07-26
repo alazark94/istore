@@ -67,7 +67,7 @@ class StoreFrontController extends Controller
     public function storeProducts(Store $store)
     {
         return inertia('Home', [
-            'categories' => $store->categories()->get(['id','name'])->unique(),
+            'categories' => $store->categories()->get(['id', 'name'])->unique(),
             'products' => $store->products()->when(request('search'), function ($query, $search) {
                 $query->where('name', 'like', "%$search%");
             })->orderBy('created_at', 'desc')
@@ -84,7 +84,6 @@ class StoreFrontController extends Controller
                 }),
             'filters' => request()->only(['search']),
         ]);
-
     }
 
     /**
@@ -103,7 +102,7 @@ class StoreFrontController extends Controller
      */
     public function checkout(Request $request)
     {
-        if(!$request->cookie('cart')) {
+        if (!$request->cookie('cart')) {
             return redirect('/')->withErrors([
                 'shopping_cart' => 'Nothing in you shopping cart!'
             ]);
@@ -113,62 +112,64 @@ class StoreFrontController extends Controller
 
     public function processCheckout(Request $request)
     {
-        if(!$request->cookie('cart')) {
+        if (!$request->cookie('cart')) {
             return redirect('/')->withErrors([
                 'shopping_cart' => 'Nothing in you shopping cart!'
             ]);
         }
-            $validated = $request->validate([
-                'paymentMethodID' => 'required',
-                'name' => 'required|string',
-                'email' => 'required|email',
-                'phone' => 'required|string',
-                'address_1' => 'required|string',
-                'address_2' => 'nullable|string',
-                'city' => 'required|string',
-                'state' => 'required|string',
-                'country' => 'required|string'
-            ], [
-                'paymentMethodID.required' => 'The payment method is required'
-            ]);
+        $validated = $request->validate([
+            'paymentMethodID' => 'required',
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'phone' => 'required|string',
+            'address_1' => 'required|string',
+            'address_2' => 'nullable|string',
+            'city' => 'required|string',
+            'state' => 'required|string',
+            'country' => 'required|string'
+        ], [
+            'paymentMethodID.required' => 'The payment method is required'
+        ]);
 
-            $customer = Customer::firstOrCreate([
-                'email' => $validated['email']
-            ], [
-                'name' => $validated['name'],
-                'phone' => $validated['phone'],
-                'address_1' => $validated['address_1'],
-                'state' => $validated['state'],
-                'city' => $validated['city'],
-                'address_2' => $validated['address_2'],
-                'country' => $validated['country']
-            ]);
+        $customer = Customer::firstOrCreate([
+            'email' => $validated['email']
+        ], [
+            'name' => $validated['name'],
+            'phone' => $validated['phone'],
+            'address_1' => $validated['address_1'],
+            'state' => $validated['state'],
+            'city' => $validated['city'],
+            'address_2' => $validated['address_2'],
+            'country' => $validated['country']
+        ]);
 
-            $customer->createOrGetStripeCustomer();
+        $customer->createOrGetStripeCustomer();
 
-            $totalPrice = 0;
-            // $products = json_decode($request->input('products'));
+        $totalPrice = 0;
+        // $products = json_decode($request->input('products'));
 
-            $output = [];
+        $output = [];
 
-            foreach (json_decode($request->cookie('cart'), true) as $lineItem)  {
+        foreach (json_decode($request->cookie('cart'), true) as $lineItem) {
 
-                $output[$lineItem['store_id']][] = $lineItem;
-                $storeTotalPrice = 0;
-                $totalPrice += $lineItem['quantity'] * $lineItem['price'];
-                $product = Product::find($lineItem['id']);
-                if($lineItem['quantity'] > $product->quantity) {
-                    return redirect()->back()->withErrors([
-                        "stock" => "$product->name has low stock quantity"
-                    ]);
-                }
-                $product->quantity = $product->quantity - $lineItem['quantity'];
-                $product->save();
-
+            $output[$lineItem['store_id']][] = $lineItem;
+            $storeTotalPrice = 0;
+            $totalPrice += $lineItem['quantity'] * $lineItem['price'];
+            $product = Product::find($lineItem['id']);
+            if ($lineItem['quantity'] > $product->quantity) {
+                return redirect()->back()->withErrors([
+                    "stock" => "$product->name has low stock quantity"
+                ]);
             }
+            $product->quantity = $product->quantity - $lineItem['quantity'];
+            $product->save();
+        }
 
-        foreach($output as $store => $products) {
-            $storePrice = array_sum(array_column($products, 'price'));
+        foreach ($output as $store => $products) {
+            $storePrice = 0;
+            foreach ($products as $product) {
+                $storePrice += $product['quantity'] * $product['price'];
+            }
             $store = Store::find($store);
             $store->customers()->attach($customer);
             $store->orders()->create([
@@ -177,15 +178,15 @@ class StoreFrontController extends Controller
                 'total_price' => $storePrice
             ]);
         }
-            try {
+        try {
 
-                $customer->charge($totalPrice *  100, $validated['paymentMethodID']);
-            }catch (IncompletePayment $e) {
-                return redirect()->route(
-                    'cashier.payment',
-                    [$e->payment->id, 'redirect' => route('home')]
-                );
-            }
+            $customer->charge($totalPrice *  100, $validated['paymentMethodID']);
+        } catch (IncompletePayment $e) {
+            return redirect()->route(
+                'cashier.payment',
+                [$e->payment->id, 'redirect' => route('home')]
+            );
+        }
 
 
 
@@ -213,5 +214,4 @@ class StoreFrontController extends Controller
             'filters' => request()->only(['search']),
         ]);
     }
-
 }
